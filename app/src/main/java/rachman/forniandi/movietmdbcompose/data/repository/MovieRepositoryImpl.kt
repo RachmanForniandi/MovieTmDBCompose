@@ -1,4 +1,4 @@
-package rachman.forniandi.movietmdbcompose.domain.repository
+package rachman.forniandi.movietmdbcompose.data.repository
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -8,6 +8,7 @@ import rachman.forniandi.movietmdbcompose.data.remote.source.RemoteDataSource
 import rachman.forniandi.movietmdbcompose.domain.Genre
 import rachman.forniandi.movietmdbcompose.domain.Movie
 import rachman.forniandi.movietmdbcompose.domain.MovieDetail
+import rachman.forniandi.movietmdbcompose.domain.repository.MovieRepository
 import rachman.forniandi.movietmdbcompose.utils.RemoteResponse
 import rachman.forniandi.movietmdbcompose.utils.toDomain
 import rachman.forniandi.movietmdbcompose.utils.toEntity
@@ -18,7 +19,7 @@ import javax.inject.Singleton
 class MovieRepositoryImpl @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource
-) : MovieRepository{
+) : MovieRepository {
     override fun getPopularMovies(): Flow<RemoteResponse<List<Movie>>> = flow {
         emit(RemoteResponse.Loading())
         try {

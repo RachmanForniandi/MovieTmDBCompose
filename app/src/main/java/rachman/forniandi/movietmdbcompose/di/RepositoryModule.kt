@@ -5,7 +5,7 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import rachman.forniandi.movietmdbcompose.domain.repository.MovieRepository
-import rachman.forniandi.movietmdbcompose.domain.repository.MovieRepositoryImpl
+import rachman.forniandi.movietmdbcompose.data.repository.MovieRepositoryImpl
 import javax.inject.Singleton
 
 @Module
