@@ -7,10 +7,12 @@ import rachman.forniandi.movietmdbcompose.domain.MovieDetail
 import rachman.forniandi.movietmdbcompose.utils.RemoteResponse
 
 interface MovieRepository {
-    suspend fun getPopularMovies(): RemoteResponse<List<Movie>>
-    suspend fun searchMovies(query: String): RemoteResponse<List<Movie>>
-    suspend fun getMovieDetail(movieId: Int): RemoteResponse<MovieDetail>
-    suspend fun getMovieGenres(): RemoteResponse<List<Genre>>
+    fun getPopularMovies(): Flow<RemoteResponse<List<Movie>>>
+    fun searchMovies(query: String): Flow<RemoteResponse<List<Movie>>>
+    fun getMovieDetail(movieId: Int): Flow<RemoteResponse<MovieDetail>>
+    fun getMovieGenres(): Flow<RemoteResponse<List<Genre>>>
+
+
     fun getAllFavorites(): Flow<List<Movie>>
     fun isFavorite(movieId: Int): Flow<Boolean>
     suspend fun addFavorite(movie: Movie)
