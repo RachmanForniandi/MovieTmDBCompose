@@ -4,8 +4,14 @@ import android.R.attr.type
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
+import rachman.forniandi.movietmdbcompose.presentation.screen.AboutScreen
+import rachman.forniandi.movietmdbcompose.presentation.screen.FavoriteScreen
+import rachman.forniandi.movietmdbcompose.presentation.screen.MovieDetailScreen
+import rachman.forniandi.movietmdbcompose.presentation.screen.MovieListScreen
 
 
 @Composable
