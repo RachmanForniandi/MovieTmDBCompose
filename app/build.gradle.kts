@@ -88,6 +88,9 @@ dependencies {
     implementation(libs.glide)
     implementation(libs.glide.compose)
 
+    //lottie
+    implementation(libs.lottie.compose)
+
     //lifecycle
     implementation (libs.androidx.lifecycle.livedata.ktx)
 

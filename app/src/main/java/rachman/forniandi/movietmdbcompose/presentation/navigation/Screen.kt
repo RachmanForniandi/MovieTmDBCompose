@@ -1,7 +1,7 @@
 package rachman.forniandi.movietmdbcompose.presentation.navigation
 
 sealed class Screen(val route: String) {
-
+    data object Splash : Screen("splash")
     data object MovieList : Screen("movie_list")
 
     data object MovieDetail : Screen("movie_detail/{movieId}") {

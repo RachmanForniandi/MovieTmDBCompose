@@ -1,6 +1,6 @@
 package rachman.forniandi.movietmdbcompose.presentation.navigation
 
-import android.R.attr.type
+
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -12,6 +12,7 @@ import rachman.forniandi.movietmdbcompose.presentation.screen.AboutScreen
 import rachman.forniandi.movietmdbcompose.presentation.screen.FavoriteScreen
 import rachman.forniandi.movietmdbcompose.presentation.screen.MovieDetailScreen
 import rachman.forniandi.movietmdbcompose.presentation.screen.MovieListScreen
+import rachman.forniandi.movietmdbcompose.presentation.screen.SplashScreen
 
 
 @Composable
@@ -21,9 +22,19 @@ fun MovieNavHost(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Screen.MovieList.route,
+        startDestination = Screen.Splash.route,
         modifier = modifier
     ) {
+
+        composable(route = Screen.Splash.route) {
+            SplashScreen(
+                onSplashFinished = {
+                    navController.navigate(Screen.MovieList.route) {
+                        popUpTo(Screen.Splash.route) { inclusive = true }
+                    }
+                }
+            )
+        }
 
         composable(route = Screen.MovieList.route) {
             MovieListScreen(
