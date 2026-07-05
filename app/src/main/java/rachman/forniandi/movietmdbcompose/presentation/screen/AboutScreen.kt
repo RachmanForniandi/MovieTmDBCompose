@@ -73,8 +73,7 @@ fun AboutScreen(
                 // contentDescription "about_page" wajib ada di sini sesuai requirement
                 .semantics { contentDescription = "about_page" }
         ) {
-            // Foto diri — ganti R.drawable.ic_launcher_foreground
-            // dengan foto asli kamu: taruh file di res/drawable/profile_photo.png
+
             Image(
                 painter = painterResource(id = R.drawable.ic_launcher_foreground),
                 contentDescription = "Foto Profil Rachman Forniandi",
@@ -98,7 +97,6 @@ fun AboutScreen(
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            // Nama lengkap sesuai yang terdaftar di Dicoding
             Text(
                 text = "Rachman Forniandi",
                 style = MaterialTheme.typography.headlineSmall,
@@ -108,9 +106,9 @@ fun AboutScreen(
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            // Email yang terdaftar di Dicoding — sesuaikan dengan email asli kamu
+
             Text(
-                text = "rachman.forniandi@email.com",
+                text = "rachmanforniandi@gmail.com",
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.primary,
                 textAlign = TextAlign.Center

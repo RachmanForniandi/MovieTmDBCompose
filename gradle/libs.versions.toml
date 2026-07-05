@@ -13,6 +13,7 @@ kotlinKsp = "2.2.0-2.0.2"
 composeBom = "2026.02.01"
 hiltAndroid = "2.59.2"
 glideVersion="5.0.4"
+glideCompose="1.0.0-beta09"
 retrofit = "3.0.0"
 converter-gson="3.0.0"
 kotlinxCoroutinesCore = "1.7.3"
@@ -43,6 +44,7 @@ androidx-compose-material3 = { group = "androidx.compose.material3", name = "mat
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converter-gson" }
 glide ={ module = "com.github.bumptech.glide:glide", version.ref = "glideVersion" }
+glide-compose= { group = "com.github.bumptech.glide", name = "compose", version.ref = "glideCompose" }
 okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
 logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp" }
 compose-icons-core = { group = "androidx.compose.material", name = "material-icons-core"}

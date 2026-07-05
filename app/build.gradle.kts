@@ -86,6 +86,7 @@ dependencies {
     implementation (libs.androidx.activity.ktx)
     //glide
     implementation(libs.glide)
+    implementation(libs.glide.compose)
 
     //lifecycle
     implementation (libs.androidx.lifecycle.livedata.ktx)

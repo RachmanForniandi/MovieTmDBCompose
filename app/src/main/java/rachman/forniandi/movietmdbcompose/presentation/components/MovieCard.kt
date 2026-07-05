@@ -27,8 +27,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import rachman.forniandi.movietmdbcompose.BuildConfig
+import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
+import com.bumptech.glide.integration.compose.GlideImage
 
-
+@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun MovieCard(
     title: String,
@@ -108,15 +110,5 @@ fun MovieCard(
             }
         }
     }
-}
-
-@Composable
-fun GlideImage(
-    model: String?,
-    contentDescription: String,
-    contentScale: ContentScale,
-    modifier: Modifier
-) {
-    TODO("Not yet implemented")
 }
 

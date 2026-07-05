@@ -38,6 +38,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontStyle
@@ -47,10 +48,11 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
+import com.bumptech.glide.integration.compose.GlideImage
 import rachman.forniandi.movietmdbcompose.BuildConfig
 import rachman.forniandi.movietmdbcompose.domain.MovieDetail
 import rachman.forniandi.movietmdbcompose.presentation.DetailMovieViewModel
-import rachman.forniandi.movietmdbcompose.presentation.components.GlideImage
 import rachman.forniandi.movietmdbcompose.utils.RemoteResponse
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -122,11 +124,8 @@ fun MovieDetailScreen(
                 Box(
                     modifier = Modifier.fillMaxSize().padding(innerPadding),
                     contentAlignment = Alignment.Center
-                ) {
-                    CircularProgressIndicator()
-                }
+                ) { CircularProgressIndicator() }
             }
-
             is RemoteResponse.Error -> {
                 Box(
                     modifier = Modifier.fillMaxSize().padding(innerPadding),
@@ -140,7 +139,6 @@ fun MovieDetailScreen(
                     )
                 }
             }
-
             is RemoteResponse.Success -> {
                 state.data?.let { detail ->
                     MovieDetailContent(
@@ -153,7 +151,7 @@ fun MovieDetailScreen(
     }
 }
 
-
+@OptIn(ExperimentalGlideComposeApi::class, ExperimentalLayoutApi::class)
 @Composable
 private fun MovieDetailContent(
     movieDetail: MovieDetail,
@@ -164,7 +162,7 @@ private fun MovieDetailContent(
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
     ) {
-        // Gambar backdrop / poster — info yang sama dengan list (poster)
+        // Backdrop image — sama dengan poster di list
         GlideImage(
             model = movieDetail.backdropPath?.let { "${BuildConfig.IMAGE_BASE_URL}$it" }
                 ?: movieDetail.posterPath?.let { "${BuildConfig.IMAGE_BASE_URL}$it" },
@@ -180,14 +178,14 @@ private fun MovieDetailContent(
                 .fillMaxWidth()
                 .padding(16.dp)
         ) {
-            // Judul — sama dengan yang ada di list
+            // Judul — sama dengan list
             Text(
                 text = movieDetail.title,
                 style = MaterialTheme.typography.headlineSmall,
                 fontWeight = FontWeight.Bold
             )
 
-            // Tagline — info tambahan (tidak ada di list)
+            // Tagline — info tambahan
             movieDetail.tagline?.takeIf { it.isNotBlank() }?.let { tagline ->
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
@@ -198,9 +196,22 @@ private fun MovieDetailContent(
                 )
             }
 
+            // Poster image — 142x184dp, marginStart 4dp, marginTop 8dp
+            Spacer(modifier = Modifier.height(8.dp))
+            GlideImage(
+                model = movieDetail.posterPath?.let { "${BuildConfig.IMAGE_BASE_URL}$it" },
+                contentDescription = "Poster ${movieDetail.title}",
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .padding(start = 4.dp)
+                    .width(142.dp)
+                    .height(184.dp)
+                    .clip(MaterialTheme.shapes.medium)
+            )
+
             Spacer(modifier = Modifier.height(12.dp))
 
-            // Rating — info yang sama dengan list
+            // Rating — sama dengan list
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(
                     imageVector = Icons.Default.Star,
@@ -261,7 +272,7 @@ private fun MovieDetailContent(
             HorizontalDivider()
             Spacer(modifier = Modifier.height(12.dp))
 
-            // Sinopsis — sama konten dengan list tapi ditampilkan penuh
+            // Sinopsis — sama konten dengan list, ditampilkan penuh
             Text(
                 text = "Sinopsis",
                 style = MaterialTheme.typography.titleSmall,
@@ -337,3 +348,4 @@ private fun InfoRow(
         )
     }
 }
+
