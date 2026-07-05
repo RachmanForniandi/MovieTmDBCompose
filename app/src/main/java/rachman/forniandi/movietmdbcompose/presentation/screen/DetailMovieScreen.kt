@@ -57,7 +57,7 @@ import rachman.forniandi.movietmdbcompose.utils.RemoteResponse
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MovieDetailScreen(
+fun DetailMovieScreen(
     movieId: Int,
     onBackClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -162,7 +162,7 @@ private fun MovieDetailContent(
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
     ) {
-        // Backdrop image — sama dengan poster di list
+
         GlideImage(
             model = movieDetail.backdropPath?.let { "${BuildConfig.IMAGE_BASE_URL}$it" }
                 ?: movieDetail.posterPath?.let { "${BuildConfig.IMAGE_BASE_URL}$it" },
@@ -178,14 +178,13 @@ private fun MovieDetailContent(
                 .fillMaxWidth()
                 .padding(16.dp)
         ) {
-            // Judul — sama dengan list
+
             Text(
                 text = movieDetail.title,
                 style = MaterialTheme.typography.headlineSmall,
                 fontWeight = FontWeight.Bold
             )
 
-            // Tagline — info tambahan
             movieDetail.tagline?.takeIf { it.isNotBlank() }?.let { tagline ->
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
@@ -196,7 +195,6 @@ private fun MovieDetailContent(
                 )
             }
 
-            // Poster image — 142x184dp, marginStart 4dp, marginTop 8dp
             Spacer(modifier = Modifier.height(8.dp))
             GlideImage(
                 model = movieDetail.posterPath?.let { "${BuildConfig.IMAGE_BASE_URL}$it" },
@@ -211,7 +209,6 @@ private fun MovieDetailContent(
 
             Spacer(modifier = Modifier.height(12.dp))
 
-            // Rating — sama dengan list
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(
                     imageVector = Icons.Default.Star,
@@ -244,7 +241,6 @@ private fun MovieDetailContent(
             HorizontalDivider()
             Spacer(modifier = Modifier.height(12.dp))
 
-            // Genre chips — info tambahan
             if (movieDetail.genres.isNotEmpty()) {
                 Text(
                     text = "Genre",
@@ -272,7 +268,6 @@ private fun MovieDetailContent(
             HorizontalDivider()
             Spacer(modifier = Modifier.height(12.dp))
 
-            // Sinopsis — sama konten dengan list, ditampilkan penuh
             Text(
                 text = "Sinopsis",
                 style = MaterialTheme.typography.titleSmall,
@@ -285,7 +280,6 @@ private fun MovieDetailContent(
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
-            // Budget & Revenue — info tambahan
             if (movieDetail.budget > 0 || movieDetail.revenue > 0) {
                 Spacer(modifier = Modifier.height(12.dp))
                 HorizontalDivider()
@@ -302,7 +296,6 @@ private fun MovieDetailContent(
                     InfoRow("Revenue", "$${"%,d".format(movieDetail.revenue)}")
             }
 
-            // Production companies — info tambahan
             if (movieDetail.productionCompanies.isNotEmpty()) {
                 Spacer(modifier = Modifier.height(12.dp))
                 Text(

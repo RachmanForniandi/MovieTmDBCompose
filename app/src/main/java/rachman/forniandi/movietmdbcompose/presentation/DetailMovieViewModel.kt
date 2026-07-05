@@ -30,7 +30,7 @@ class DetailMovieViewModel @Inject constructor(
         viewModelScope.launch {
             movieUseCase.getMovieDetail(movieId).collect { response ->
                 _detailState.value = response
-                // Setelah data sukses, mulai observe status favorit
+
                 if (response is RemoteResponse.Success) {
                     observeFavoriteStatus(movieId)
                 }

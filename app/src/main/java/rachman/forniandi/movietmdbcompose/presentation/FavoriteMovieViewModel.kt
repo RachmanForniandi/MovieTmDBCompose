@@ -17,7 +17,6 @@ class FavoriteMovieViewModel @Inject constructor(
     private val favoriteMovieUseCase: FavoriteMovieUseCase
 ) : ViewModel() {
 
-    // Pakai RemoteResponse agar UI bisa handle Loading / Success / Empty state
     private val _favoritesState = MutableStateFlow<RemoteResponse<List<Movie>>>(RemoteResponse.Loading())
     val favoritesState: StateFlow<RemoteResponse<List<Movie>>> = _favoritesState.asStateFlow()
 

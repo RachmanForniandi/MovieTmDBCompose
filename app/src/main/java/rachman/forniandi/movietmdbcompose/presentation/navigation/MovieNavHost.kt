@@ -10,7 +10,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import rachman.forniandi.movietmdbcompose.presentation.screen.AboutScreen
 import rachman.forniandi.movietmdbcompose.presentation.screen.FavoriteScreen
-import rachman.forniandi.movietmdbcompose.presentation.screen.MovieDetailScreen
+import rachman.forniandi.movietmdbcompose.presentation.screen.DetailMovieScreen
 import rachman.forniandi.movietmdbcompose.presentation.screen.MovieListScreen
 import rachman.forniandi.movietmdbcompose.presentation.screen.SplashScreen
 
@@ -61,7 +61,7 @@ fun MovieNavHost(
             )
         ) { backStackEntry ->
             val movieId = backStackEntry.arguments?.getInt("movieId") ?: return@composable
-            MovieDetailScreen(
+            DetailMovieScreen(
                 movieId = movieId,
                 onBackClick = { navController.popBackStack() }
             )

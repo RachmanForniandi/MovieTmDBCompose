@@ -23,10 +23,8 @@ import javax.inject.Inject
 @HiltViewModel
 class MovieViewModel @Inject constructor(
     private val movieUseCase: MovieUseCase,
-    private val favoriteMovieUseCase: FavoriteMovieUseCase
 ) : ViewModel() {
 
-    // Pakai RemoteResponse langsung — tidak perlu sealed class tambahan
     private val _moviesState = MutableStateFlow<RemoteResponse<List<Movie>>>(RemoteResponse.Loading())
     val moviesState: StateFlow<RemoteResponse<List<Movie>>> = _moviesState.asStateFlow()
 
@@ -36,8 +34,6 @@ class MovieViewModel @Inject constructor(
     private val _searchQuery = MutableStateFlow("")
     val searchQuery: StateFlow<String> = _searchQuery.asStateFlow()
 
-    val favorites: StateFlow<List<Movie>> = favoriteMovieUseCase.getAllFavorites()
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
     private var searchJob: Job? = null
 

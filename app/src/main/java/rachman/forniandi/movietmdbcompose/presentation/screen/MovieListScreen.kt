@@ -90,7 +90,7 @@ fun MovieListScreen(
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
-            // Pakai OutlinedTextField — lebih stabil dari SearchBar M3 experimental
+
             OutlinedTextField(
                 value = searchQuery,
                 onValueChange = viewModel::onSearchQueryChanged,

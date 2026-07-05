@@ -24,19 +24,4 @@ class MovieInteractor @Inject constructor(
     override fun getMovieGenres(): Flow<RemoteResponse<List<Genre>>> =
         repository.getMovieGenres()
 
-/*    override fun getAllFavorites(): Flow<List<Movie>> {
-        TODO("Not yet implemented")
-    }
-
-    override fun isFavorite(movieId: Int): Flow<Boolean> {
-        TODO("Not yet implemented")
-    }
-
-    override suspend fun addFavorite(movie: Movie) {
-        TODO("Not yet implemented")
-    }
-
-    override suspend fun removeFavorite(movieId: Int) {
-        TODO("Not yet implemented")
-    }*/
 }
