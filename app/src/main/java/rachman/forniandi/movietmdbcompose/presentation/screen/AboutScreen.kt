@@ -74,7 +74,7 @@ fun AboutScreen(
         ) {
 
             Image(
-                painter = painterResource(id = R.drawable.ic_launcher_foreground),
+                painter = painterResource(id = R.drawable.pas_photo),
                 contentDescription = "Foto Profil Rachman Forniandi",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
