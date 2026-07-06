@@ -29,12 +29,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import rachman.forniandi.movietmdbcompose.R
 import rachman.forniandi.movietmdbcompose.domain.Movie
 import rachman.forniandi.movietmdbcompose.presentation.MovieViewModel
 import rachman.forniandi.movietmdbcompose.presentation.components.MovieCard
@@ -57,7 +59,7 @@ fun MovieListScreen(
         modifier = modifier,
         topBar = {
             TopAppBar(
-                title = { Text("Movie TmDB") },
+                title = { stringResource(R.string.app_name)},
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primary,
                     titleContentColor = MaterialTheme.colorScheme.onPrimary,
