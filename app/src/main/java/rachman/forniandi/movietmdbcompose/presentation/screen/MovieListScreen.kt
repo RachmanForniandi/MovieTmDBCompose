@@ -59,7 +59,8 @@ fun MovieListScreen(
         modifier = modifier,
         topBar = {
             TopAppBar(
-                title = { stringResource(R.string.app_name)},
+                // FIX: sebelumnya `stringResource(...)` tanpa Text() — tidak render apapun
+                title = { Text(stringResource(R.string.app_name)) },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primary,
                     titleContentColor = MaterialTheme.colorScheme.onPrimary,
