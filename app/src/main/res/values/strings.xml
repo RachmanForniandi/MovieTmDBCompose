@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MovieTmdbCompose</string>
+    <string name="movie_tmdb">Movie TmDB</string>
 </resources>
